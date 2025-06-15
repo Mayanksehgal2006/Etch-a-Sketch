@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Etch-a-Sketch</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <button>Choose No. of sqaures per side</button>
+        <div class="grid"></div>
+        <script>
+            const z=document.querySelector("button");
+            function noofgrids() {
+                let c=prompt("Enter number of sqaures per side: ")
+                while(c>=100) {
+                    alert("choose a number less than 100");
+                    c=prompt("Enter number of sqaures per side: ");
+                }
+                const d=document.querySelectorAll(".box");
+                d.forEach(box=>box.remove());
+                const x=document.querySelector(".grid");
+                x.style.cssText=`height:${60*c}px;width:${60*c}px`;
+            for(let i=0;i<c*c;i++) {
+                const y=document.createElement("div");
+                y.classList.add("box");
+                function Enterr() {
+                    const r=Math.floor(Math.random()*256);
+                    const g=Math.floor(Math.random()*256);
+                    const j=Math.floor(Math.random()*256);
+                    y.style.cssText=`border:2px solid yellow; background-color:rgb(${r},${g},${j})`;
+                }
+                function Leavee() {
+                    y.style.border="border:2px solid black";
+                }
+                y.addEventListener("mouseenter",Enterr)
+                y.addEventListener("mouseleave",Leavee)
+                x.appendChild(y);
+            }
+            }
+            z.addEventListener("click",noofgrids);
+            const a=document.querySelector(".grid");
+            for(let i=0;i<16*16;i++) {
+                const b=document.createElement("div");
+                b.classList.add("box");
+                function Enter() {
+                    const r=Math.floor(Math.random()*256);
+                    const g=Math.floor(Math.random()*256);
+                    const j=Math.floor(Math.random()*256);
+                    b.style.cssText=`border:2px solid yellow; background-color:rgb(${r},${g},${j})`;
+                }
+                function Leave() {
+                    b.style.border="border:2px solid black";
+                }
+                b.addEventListener("mouseenter",Enter)
+                b.addEventListener("mouseleave",Leave)
+                a.appendChild(b);
+            }
+        </script>
+    </body>
+</html>
